@@ -258,3 +258,332 @@
 .pdf-highlight {
     opacity: 0.5;
 }
+
+/* Comment Functionality Styles */
+/* Comment Text Indicators */
+.pdf-comment {
+    position: relative;
+    border-bottom: 2px dotted #4374E0;
+    background-color: rgba(67, 116, 224, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pdf-comment:hover {
+    border-bottom-color: #2c5aa0;
+    background-color: rgba(67, 116, 224, 0.2);
+    box-shadow: 0 2px 4px rgba(67, 116, 224, 0.3);
+}
+
+.pdf-comment.active {
+    background-color: rgba(67, 116, 224, 0.25);
+    border-bottom-color: #1e3a8a;
+}
+
+/* Comment Icon Indicator */
+.pdf-comment::after {
+    content: '💬';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.pdf-comment:hover::after {
+    opacity: 1;
+}
+
+/* Comment Popup Container */
+.comment-popup {
+    position: absolute;
+    width: 320px;
+    max-width: 90vw;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(67, 116, 224, 0.2);
+    z-index: 10000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    animation: commentPopupFadeIn 0.2s ease-out;
+}
+
+@keyframes commentPopupFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Comment Popup Header */
+.comment-popup-header {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-popup-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+.comment-popup-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.comment-popup-close:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+/* Comment Input Area */
+.comment-input-container {
+    padding: 16px 20px;
+}
+
+.comment-textarea {
+    width: 100%;
+    min-height: 80px;
+    max-height: 200px;
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.comment-textarea:focus {
+    border-color: #4374E0;
+    box-shadow: 0 0 0 3px rgba(67, 116, 224, 0.1);
+}
+
+.comment-textarea::placeholder {
+    color: #9ca3af;
+}
+
+/* Character Counter */
+.comment-char-counter {
+    text-align: right;
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.comment-char-counter.warning {
+    color: #f59e0b;
+}
+
+.comment-char-counter.error {
+    color: #ef4444;
+}
+
+/* Comment Toolbar */
+.comment-toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 8px;
+    background-color: #f9fafb;
+    border-radius: 6px;
+}
+
+.comment-toolbar-btn {
+    background: none;
+    border: 1px solid #d1d5db;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.comment-toolbar-btn:hover {
+    background-color: #e5e7eb;
+}
+
+.comment-toolbar-btn.active {
+    background-color: #4374E0;
+    color: white;
+    border-color: #4374E0;
+}
+
+/* Comment Actions */
+.comment-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    padding: 12px 20px 16px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.comment-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.comment-btn-primary {
+    background-color: #4374E0;
+    color: white;
+}
+
+.comment-btn-primary:hover {
+    background-color: #3865cc;
+    transform: translateY(-1px);
+}
+
+.comment-btn-secondary {
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.comment-btn-secondary:hover {
+    background-color: #e5e7eb;
+}
+
+/* Comment Display */
+.comment-display {
+    padding: 16px 20px;
+}
+
+.comment-content {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #374151;
+    margin-bottom: 12px;
+}
+
+.comment-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 12px;
+}
+
+.comment-timestamp {
+    font-style: italic;
+}
+
+.comment-display-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.comment-action-btn {
+    background: none;
+    border: none;
+    color: #4374E0;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.comment-action-btn:hover {
+    background-color: rgba(67, 116, 224, 0.1);
+}
+
+/* Comment Preview Tooltip */
+.comment-preview-tooltip {
+    position: absolute;
+    background: #1f2937;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    max-width: 200px;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.comment-preview-tooltip.show {
+    opacity: 1;
+}
+
+.comment-preview-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: #1f2937;
+}
+
+/* Multiple Comments Indicator */
+.pdf-comment.multiple {
+    position: relative;
+}
+
+.pdf-comment.multiple::before {
+    content: attr(data-comment-count);
+    position: absolute;
+    top: -12px;
+    right: -8px;
+    background: #4374E0;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 10px;
+    min-width: 16px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .comment-popup {
+        width: 280px;
+        max-width: 95vw;
+    }
+
+    .comment-toolbar {
+        flex-wrap: wrap;
+    }
+
+    .comment-actions {
+        flex-direction: column;
+    }
+
+    .comment-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+#drawing-canvas {
+    pointer-events: none;
+    touch-action: none;
+}

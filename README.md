@@ -3,9 +3,18 @@
 This extension adds annotation capabilities to the Google Scholar PDF Reader extension. The extended features include:
 
 - Highlight text with colors (yellow, green, blue, pink, red, or custom).
-- Easily remove individual annotations or clear them all at once.
+- Draw free-form curves with colors (white, black, red, green, or custom).
+- Add text on top of the page with colors (white, black, red, green, or custom).
+- Comment on text.
+- Easily remove individual annotations or clear them all at once (Irreversible).
 - Undo and redo actions for annotations.
 - Import and export annotations into a JSON file.
+- Export (download) the annotated PDF.
+- Night+ mode with dark background.
+
+To use this extension, clone or download this repository and load the "extension" folder as an unpacked extension in your Chromium-based browser (e.g., Google Chrome, Microsoft Edge, Brave).
+
+Below are the original README contents.
 
 Currently, annotations are stored in the browser's local storage and associated with each document URL. The PDF files are not modified, but annotations persist across browser sessions.
 
@@ -92,4 +101,8 @@ For bug reports and feature suggestions, please open an issue on GitHub. Feel fr
 
 This project is not affiliated with, supported, or endorsed by Google. Nonetheless, by installing this extension, you agree to the Google Terms of Service and Privacy Policy at https://www.google.com/intl/en/policies/.
 
+## Acknowledgements
 
+The comment functionality uses [powdersnow0604](https://github.com/powdersnow0604/Scholar-PDF-Reader-with-Annotations)'s work.
+
+The pdf export functionality uses [somefoo](https://github.com/somefoo/Scholar-PDF-Reader-with-Annotations)'s work.
